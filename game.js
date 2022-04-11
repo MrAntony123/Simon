@@ -17,7 +17,13 @@ $("body").keypress(function(event) {
     started = true;
   }
 });
-
+//changed
+$("body").on("tap",function(event) {
+  if (!started) {
+    nextSequence();
+    started = true;
+  }
+});
 function nextSequence() {
   var randomNumber = Math.floor(Math.random() * 4);
   var randomChosenColor = buttonColors[randomNumber];
@@ -63,6 +69,8 @@ function checkAnswer(currentLevel) {
       }, 200);
     $("#level-title").html("Game Over, Press Any Key to Restart");
     $("body").keypress(startOver());
+    //changed
+    $("body").on("tap",startOver());
   }
 }
 function startOver() {
